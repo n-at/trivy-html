@@ -10,4 +10,4 @@ ADD entrypoint.sh /opt/
 
 WORKDIR /opt
 
-ENTRYPOINT [ "entrypoint.sh" ]
+ENTRYPOINT [ "/bin/sh", "entrypoint.sh" ]

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 SCAN_IMAGE=${SCAN_IMAGE:-$1}
 
@@ -10,8 +10,8 @@ fi
 SCAN_TAG=${SCAN_TAG:-$2}
 SCAN_TAG=${SCAN_TAG:-"latest"}
 
-OUTPUT_IMAGE=$(echo "${SCAN_IMAGE}" | tr -c '[:alnum:]-_' '-')
-OUTPUT_TAG=$(echo "${SCAN_TAG}" | tr -c '[:alnum:]-_' '-')
+OUTPUT_IMAGE=$(echo "${SCAN_IMAGE}" | tr -c '[:alnum:]-_\r\n' '-')
+OUTPUT_TAG=$(echo "${SCAN_TAG}" | tr -c '[:alnum:]-_\r\n' '-')
 OUTPUT_REPORT_DATE="$(date +'%Y-%m-%d-%H-%M-%S')"
 
 mkdir -p "/opt/reports/${OUTPUT_IMAGE}/${OUTPUT_TAG}/"

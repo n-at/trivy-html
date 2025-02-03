@@ -2,8 +2,8 @@ services:
   trivy-vex-hub:
     image: "nginx"
     container_name: "trivy-vex-hub"
-    ports:
-    - "3000:80"
+    # ports:
+    # - "3000:80"
     volumes:
     - "./reports:/reports"
     - "./vexhub:/vexhub"

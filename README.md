@@ -2,15 +2,13 @@
 
 ```bash
 docker run --rm \
-    -v /var/run/docker.sock:/var/run/docker.sock \
-    -v $(pwd)/cache:/root/.cache/ \
     -v $(pwd)/reports:/opt/reports/ \
     --network trivy-network \
-    trivy-html alpine latest
+    trivy-html ubuntu 20.04
 ```
 
 Environment variables:
 
-* `SCAN_IMAGE`
-* `SCAN_TAG` (default `latest`)
-* `SCAN_FLAGS`
+* `SCAN_IMAGE` (or first positional parameter)
+* `SCAN_TAG` (or second positional parameter, default `latest`)
+* `SCAN_FLAGS` (trivy image scan flags)
