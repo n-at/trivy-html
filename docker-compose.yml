@@ -1,0 +1,16 @@
+services:
+  trivy-vex-hub:
+    image: "nginx"
+    container_name: "trivy-vex-hub"
+    ports:
+    - "3000:80"
+    volumes:
+    - "./reports:/reports"
+    - "./vexhub:/vexhub"
+    - "./nginx:/etc/nginx/conf.d"
+    restart: unless-stopped
+
+networks:
+  default:
+    external: true
+    name: "trivy-network"

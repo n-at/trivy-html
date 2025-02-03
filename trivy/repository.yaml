@@ -1,0 +1,10 @@
+repositories:
+  - name: default
+    url: https://github.com/aquasecurity/vexhub
+    enabled: false
+    username: ""
+    password: ""
+    token: ""
+  - name: custom
+    url: http://trivy-vex-hub:80/vexhub
+    enabled: true
