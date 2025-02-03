@@ -6,5 +6,5 @@ docker run --rm \
     -v $(pwd)/cache:/root/.cache/ \
     -v $(pwd)/reports:/opt/reports/ \
     --network trivy-network \
-    trivy-html "alpine:latest"
+    trivy-html alpine latest
 ```
