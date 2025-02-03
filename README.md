@@ -8,3 +8,9 @@ docker run --rm \
     --network trivy-network \
     trivy-html alpine latest
 ```
+
+Environment variables:
+
+* `SCAN_IMAGE`
+* `SCAN_TAG` (default `latest`)
+* `SCAN_FLAGS`

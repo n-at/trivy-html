@@ -1,8 +1,7 @@
 FROM aquasec/trivy:0.59.0
 
-ADD db /root/.cache/trivy/
-
 RUN trivy plugin install scan2html &&\
+    trivy image --download-db-only --download-java-db-only &&\
     trivy vex repo init
 
 ADD repository.yaml /root/.trivy/vex/

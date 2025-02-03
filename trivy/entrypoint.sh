@@ -10,8 +10,6 @@ fi
 SCAN_TAG=${SCAN_TAG:-$2}
 SCAN_TAG=${SCAN_TAG:-"latest"}
 
-SCAN_SCANNERS=${SCAN_SCANNERS:-"vuln,secret,misconfig,license"}
-
 OUTPUT_IMAGE=$(echo "${SCAN_IMAGE}" | tr -c '[:alnum:]-_' '-')
 OUTPUT_TAG=$(echo "${SCAN_TAG}" | tr -c '[:alnum:]-_' '-')
 OUTPUT_REPORT_DATE="$(date +'%Y-%m-%d-%H-%M-%S')"
@@ -19,8 +17,8 @@ OUTPUT_REPORT_DATE="$(date +'%Y-%m-%d-%H-%M-%S')"
 mkdir -p "/opt/reports/${OUTPUT_IMAGE}/${OUTPUT_TAG}/"
 
 trivy scan2html image \
-    --scanners "${SCAN_SCANNERS}" \
-    --offline-scan \
-    "${SCAN_IMAGE}" \
+    --offline-scan --skip-db-update --skip-java-db-update \
+    ${SCAN_FLAGS} \
+    "${SCAN_IMAGE}:${SCAN_TAG}" \
     --scan2html-flags \
     --output "/opt/reports/${OUTPUT_IMAGE}/${OUTPUT_TAG}/${OUTPUT_REPORT_DATE}.html"
